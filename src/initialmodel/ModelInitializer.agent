@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="ModelInitializer" agentparentclassname="" agentinterfaces="" agentimports="java.io.File, com.vividsolutions.jts.geom.*">
+  <behaviorsteps>
+    <behaviorstep x="91" y="85" scheduleannotationstart="0" scheduleannotationpick="" scheduleannotationinterval="" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="0" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="0" watchannotationtriggerdelta="" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the user model builder" visibility="4" returntype="def" compiledname="initializeModel" parameters="" exceptions="">
+      <label x="82" y="69" text="Initialize Model"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="315" y="485" comment="This is a task." command1="ZonalAgent thisAgent = new ZonalAgent();\fcontext.add(thisAgent);\ftempString = myReader.readLine(); \ftempArray = tempString.split(&quot;,&quot;);\fthisAgent.setLongitude(Float.parseFloat(tempArray[1]));\fthisAgent.setLatitude(Float.parseFloat(tempArray[2]));\fCoordinate thisCoordinate = new Coordinate(thisAgent.getLongitude(), thisAgent.getLatitude());\finitialGeog.move(thisAgent,thisFactory.createPoint(thisCoordinate));" command2="tempString = centresReader.readLine(); \ftempArray = tempString.split(&quot;,&quot;);\fthisAgent.setJob(Float.parseFloat(tempArray[0]));\fthisAgent.setPry(Float.parseFloat(tempArray[1]));\fthisAgent.setPrice(Float.parseFloat(tempArray[2]));" command3="tempString = popReader.readLine();thisAgent.setPop(Float.parseFloat(tempString))" command4="if (i == 51) {thisAgent.setProdZone(true)}" command5="tempString = windyReader.readLine();thisAgent.setWindy(Float.parseFloat(tempString)); thisAgent.setSun(2+(0.2*(58 - thisAgent.getLatitude())));">
+      <label x="315" y="470" text="Create zonal agents and add to geography"/>
+    </taskstep>
+    <taskstep x="93" y="385" comment="This is a task." command1="Geography initialGeog = FindGeography(&quot;geography&quot;);\fGeometryFactory thisFactory = new GeometryFactory();\fContext context = FindContext(&quot;initialModel&quot;)" command2="if (context == null){System.out.println(&quot;Context null!!&quot;)};" command3="" command4="" command5="">
+      <label x="93" y="370" text="Initialize geography factory etc"/>
+    </taskstep>
+    <taskstep x="93" y="187" comment="This is a task." command1="File coords = new File(&quot;C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/zoneCoords.csv&quot;);\fBufferedReader myReader = new BufferedReader(new FileReader(coords));\fString tempString = myReader.readLine(); //Discard header line (hack we know format)\fString [] tempArray = new String[3]" command2="" command3="" command4="" command5="">
+      <label x="93" y="172" text="Open co-ords file"/>
+    </taskstep>
+    <taskstep x="94" y="290" comment="This is a task." command1="File centres = new File(&quot;C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/centres.csv&quot;);\fBufferedReader centresReader = new BufferedReader(new FileReader(centres));" command2="File popFile = new File(&quot;C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/pop.csv&quot;);\fBufferedReader popReader = new BufferedReader(new FileReader(popFile));" command3="File windyFile = new File(&quot;C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/windy.csv&quot;);\fBufferedReader windyReader = new BufferedReader(new FileReader(windyFile));" command4="" command5="">
+      <label x="94" y="275" text="Open Centres, pop and windy files"/>
+    </taskstep>
+    <taskstep x="95" y="596" comment="This is a task." command1="InvestorAgent thisAgent = new InvestorAgent();\fcontext.add(thisAgent);" command2="" command3="" command4="" command5="">
+      <label x="95" y="581" text="Create Investment agent"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps>
+    <decisionstep x="93" y="485" comment="This is a loop." criteria="i in 1..100" branchType="while">
+      <label x="93" y="470" text="Create 100 zonal agents spread across UK"/>
+    </decisionstep>
+  </decisionsteps>
+  <joinsteps/>
+  <agentproperties/>
+  <endsteps>
+    <endstep x="113" y="683"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="2" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="1" anchor="2"/>
+        <transitiontarget type="decision" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="2" anchor="2"/>
+        <transitiontarget type="task" index="3" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="3" anchor="2"/>
+        <transitiontarget type="task" index="1" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="4" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions>
+      <booleantransition value="true">
+        <transitionsource type="decision" index="0" anchor="3"/>
+        <transitiontarget type="task" index="0" anchor="1"/>
+        <bendpoints/>
+      </booleantransition>
+      <booleantransition value="false">
+        <transitionsource type="decision" index="0" anchor="2"/>
+        <transitiontarget type="task" index="4" anchor="0"/>
+        <bendpoints/>
+      </booleantransition>
+    </booleantransitions>
+  </connections>
+</agent>

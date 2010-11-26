@@ -1,0 +1,118 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>ModelInitializer.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">ModelInitializer.agent</P></HEAD><IMG SRC=images/initialmodel.ModelInitializer.png border=1 alt="Flowchart for ModelInitializer.agent" title="Flowchart for ModelInitializer.agent"></P>The package name is "initialmodel".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+<li>Components from java.io.File</li></p>
+<li>Components from com.vividsolutions.jts.geom.*</li></p>
+</BLOCKQUOTE><P></p>
+The class "ModelInitializer" is defined with visibility "public" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "initializeModel" method has visibility     "public""static" has return type "def". This is the user model builder The block is tagged with the name "Initialize Model".</li></p>
+    </p>
+    </p>
+    <BLOCKQUOTE>The initializeModel method is statically scheduled as follows:<BLOCKQUOTE></p>
+        <li>start = 0d</li></p>
+        <li>shuffle = true</li></p>
+    </BLOCKQUOTE></BLOCKQUOTE></p>
+ <BLOCKQUOTE>The code for the "initializeModel" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        File coords = new File("C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/zoneCoords.csv");</p>
+        BufferedReader myReader = new BufferedReader(new FileReader(coords));</p>
+        String tempString = myReader.readLine(); Discard header line (hack we know format)</p>
+        String [] tempArray = new String[3]</p>
+         This is a task.</p>
+        File centres = new File("C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/centres.csv");</p>
+        BufferedReader centresReader = new BufferedReader(new FileReader(centres));</p>
+        File popFile = new File("C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/pop.csv");</p>
+        BufferedReader popReader = new BufferedReader(new FileReader(popFile));</p>
+        File windyFile = new File("C:/Program Files/RepastSimphony-1.2.0/workspace/InitialModel/inputFiles/windy.csv");</p>
+        BufferedReader windyReader = new BufferedReader(new FileReader(windyFile));</p>
+         This is a task.</p>
+        Geography initialGeog = FindGeography("geography");</p>
+        GeometryFactory thisFactory = new GeometryFactory();</p>
+        Context context = FindContext("initialModel")</p>
+        if (context == null)<BLOCKQUOTE>System.out.println("Context null!!")</BLOCKQUOTE>;</p>
+</p>
+         This is a loop.</p>
+        for (i in 1..100) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            ZonalAgent thisAgent = new ZonalAgent();</p>
+            context.add(thisAgent);</p>
+            tempString = myReader.readLine(); </p>
+            tempArray = tempString.split(",");</p>
+            thisAgent.setLongitude(Float.parseFloat(tempArray[1]));</p>
+            thisAgent.setLatitude(Float.parseFloat(tempArray[2]));</p>
+            Coordinate thisCoordinate = new Coordinate(thisAgent.getLongitude(), thisAgent.getLatitude());</p>
+            initialGeog.move(thisAgent,thisFactory.createPoint(thisCoordinate));</p>
+            tempString = centresReader.readLine(); </p>
+            tempArray = tempString.split(",");</p>
+            thisAgent.setJob(Float.parseFloat(tempArray[0]));</p>
+            thisAgent.setPry(Float.parseFloat(tempArray[1]));</p>
+            thisAgent.setPrice(Float.parseFloat(tempArray[2]));</p>
+            tempString = popReader.readLine();thisAgent.setPop(Float.parseFloat(tempString))</p>
+            if (i == 51) <BLOCKQUOTE>thisAgent.setProdZone(true)</BLOCKQUOTE></p>
+            tempString = windyReader.readLine();thisAgent.setWindy(Float.parseFloat(tempString)); thisAgent.setSun(2+(0.2*(58 - thisAgent.getLatitude())));</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        InvestorAgent thisAgent = new InvestorAgent();</p>
+        context.add(thisAgent);</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

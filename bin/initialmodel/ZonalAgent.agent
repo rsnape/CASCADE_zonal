@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent version="1" agentcomment="This is an agent." agentclassname="ZonalAgent" agentparentclassname="" agentinterfaces="" agentimports="">
+  <behaviorsteps>
+    <behaviorstep x="58" y="192" scheduleannotationstart="1" scheduleannotationpick="" scheduleannotationinterval="1" scheduleannotationpriority="" scheduleannotationduration="" scheduleannotationshuffle="1" watchannotationid="" watchannotationquery="" watchannotationtargetclassname="" watchannotationtargetfieldnames="" watchannotationtriggercondition="" watchannotationtriggerschedule="1" watchannotationtriggerdelta="1" watchannotationtriggerpriority="" watchannotationpick="" comment="This is the step behavior." visibility="0" returntype="def" compiledname="step" parameters="" exceptions="">
+      <label x="58" y="177" text="Update amount of solar and wind"/>
+    </behaviorstep>
+  </behaviorsteps>
+  <tasksteps>
+    <taskstep x="58" y="314" comment="This is a task." command1="double delt = GetParameter(&quot;delt&quot;);" command2="this.setAttso( exp(1+0.5*this.getSun()));\fthis.setAttw( exp(1+0.5*this.getWindy())) ;     \f// In original model, order important - need to sum attw and attso across all agents after this step for the lines below\f// involving the Investor Agent re macro solar and wind\fthis.setDmiso( GetParameter(&quot;gs&quot;)*(this.getSun()*1.1 -1)*(this.getPop()/this.getMiso() -1)*(1 + 0.05*this.getMiso()));\f// people taking up solar, fraction of houses without, suitable, owned, roof area. R ROC for households\fthis.setDmiw( GetParameter(&quot;gw&quot;)*(this.getWindy()*1.025 -1)*(this.getPop()/this.getMiw() - 1)*(1 + 0.05*this.getMiw()));\f                 //people adopting micro wind\fthis.setMiso( this.getMiso() + this.getDmiso()*delt);\fthis.setMiw( this.getMiw() + this.getDmiw()*delt);\fInvestorAgent myInvestor = FindContext(&quot;initialModel&quot;).getObjects(InvestorAgent).get(0);  // a hack as we have only one, so no network\fthis.setDmaso( myInvestor.getInvso()*this.getAttso()/myInvestor.getSumattso());\fthis.setDmaw( myInvestor.getInvw()*this.getAttw()/myInvestor.getSumattw());\fthis.setMaso( this.getMaso() + this.getDmaso()*delt);\fthis.setMaw( this.getMaw() + this.getDmaw()*delt);" command3="" command4="" command5="">
+      <label x="58" y="299" text="Update micro and macro solar and wing"/>
+    </taskstep>
+  </tasksteps>
+  <decisionsteps/>
+  <joinsteps/>
+  <agentproperties>
+    <agentproperty x="562" y="120" comment="This is an agent property." visibility="0" compiledname="longitude" type="float" defaultvalue="0">
+      <label x="567" y="105" text="longitude"/>
+    </agentproperty>
+    <agentproperty x="563" y="44" comment="This is an agent property." visibility="0" compiledname="latitude" type="float" defaultvalue="0">
+      <label x="568" y="29" text="latitude"/>
+    </agentproperty>
+    <agentproperty x="417" y="252" comment="This is an agent property." visibility="0" compiledname="initDemand" type="double" defaultvalue="0">
+      <label x="422" y="237" text="initDemand"/>
+    </agentproperty>
+    <agentproperty x="491" y="205" comment="This is an agent property." visibility="0" compiledname="prodZone" type="boolean" defaultvalue="0">
+      <label x="496" y="190" text="Zone of Production?"/>
+    </agentproperty>
+    <agentproperty x="422" y="376" comment="This is an agent property." visibility="0" compiledname="mkkup" type="double" defaultvalue="0.1">
+      <label x="427" y="361" text="Mark Up"/>
+    </agentproperty>
+    <agentproperty x="424" y="468" comment="This is an agent property." visibility="0" compiledname="job" type="double" defaultvalue="0.0001">
+      <label x="429" y="453" text="job"/>
+    </agentproperty>
+    <agentproperty x="161" y="508" comment="This is an agent property." visibility="0" compiledname="pry" type="double" defaultvalue="0">
+      <label x="166" y="493" text="pry"/>
+    </agentproperty>
+    <agentproperty x="621" y="76" comment="This is an agent property." visibility="0" compiledname="price" type="double" defaultvalue="0">
+      <label x="626" y="61" text="price"/>
+    </agentproperty>
+    <agentproperty x="430" y="590" comment="This is an agent property." visibility="0" compiledname="pop" type="double" defaultvalue="0">
+      <label x="435" y="575" text="Population"/>
+    </agentproperty>
+    <agentproperty x="61" y="58" comment="This is an agent property." visibility="0" compiledname="miso" type="double" defaultvalue="0.1">
+      <label x="66" y="43" text="Micro Solar"/>
+    </agentproperty>
+    <agentproperty x="134" y="77" comment="This is an agent property." visibility="0" compiledname="maso" type="double" defaultvalue="0.1">
+      <label x="139" y="62" text="Macro Solar"/>
+    </agentproperty>
+    <agentproperty x="206" y="46" comment="This is an agent property." visibility="0" compiledname="miw" type="double" defaultvalue="0.1">
+      <label x="211" y="31" text="Micro Wind"/>
+    </agentproperty>
+    <agentproperty x="313" y="39" comment="This is an agent property." visibility="0" compiledname="maw" type="double" defaultvalue="0.1">
+      <label x="318" y="24" text="Macro Wind"/>
+    </agentproperty>
+    <agentproperty x="414" y="47" comment="This is an agent property." visibility="0" compiledname="windy" type="double" defaultvalue="0">
+      <label x="419" y="32" text="How windy?"/>
+    </agentproperty>
+    <agentproperty x="412" y="116" comment="This is an agent property." visibility="0" compiledname="sun" type="double" defaultvalue="0">
+      <label x="417" y="101" text="How Sunny?"/>
+    </agentproperty>
+    <agentproperty x="535" y="380" comment="This is an agent property." visibility="0" compiledname="attso" type="double" defaultvalue="0">
+      <label x="540" y="365" text="Attractivity of solar"/>
+    </agentproperty>
+    <agentproperty x="529" y="482" comment="This is an agent property." visibility="0" compiledname="attw" type="double" defaultvalue="0">
+      <label x="534" y="467" text="Attractivity of wind"/>
+    </agentproperty>
+    <agentproperty x="182" y="170" comment="This is an agent property." visibility="0" compiledname="dmiso" type="double" defaultvalue="0">
+      <label x="187" y="155" text="Delta micro solar with delta t"/>
+    </agentproperty>
+    <agentproperty x="188" y="414" comment="This is an agent property." visibility="0" compiledname="dmaw" type="double" defaultvalue="0">
+      <label x="193" y="399" text="Delta macro wind with delta t"/>
+    </agentproperty>
+    <agentproperty x="206" y="328" comment="This is an agent property." visibility="0" compiledname="dmiw" type="double" defaultvalue="0">
+      <label x="211" y="313" text="Delta micro wind with delta t"/>
+    </agentproperty>
+    <agentproperty x="195" y="250" comment="This is an agent property." visibility="0" compiledname="dmaso" type="double" defaultvalue="0">
+      <label x="200" y="235" text="Delta macro solar with delta t"/>
+    </agentproperty>
+  </agentproperties>
+  <endsteps>
+    <endstep x="73" y="443"/>
+  </endsteps>
+  <connections>
+    <transitions>
+      <transition>
+        <transitionsource type="behavior" index="0" anchor="0"/>
+        <transitiontarget type="task" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+      <transition>
+        <transitionsource type="task" index="0" anchor="2"/>
+        <transitiontarget type="end" index="0" anchor="0"/>
+        <bendpoints/>
+      </transition>
+    </transitions>
+    <booleantransitions/>
+  </connections>
+</agent>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<score:SContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:score="http://scoreabm.org/score" label="initialModel" ID="initialModel" pluralLabel="initialModels">
+  <attributes label="Time Step (delta t)" ID="delt" pluralLabel="Time Step (delta t)s" sType="FLOAT" defaultValue="0.1"/>
+  <attributes label="Global Wind" ID="gw" pluralLabel="Global Winds" description="" sType="FLOAT" defaultValue="0.02"/>
+  <attributes label="Global Solar" ID="gs" pluralLabel="Global Solars" sType="FLOAT" defaultValue="0.01"/>
+  <implementation package="initialmodel" className="" basePath="../InitialModel" mode="AUTO"/>
+  <agents label="ZonalAgent" ID="zonalAgent" pluralLabel="ZonalAgents" description="">
+    <implementation className="ZonalAgent"/>
+  </agents>
+  <agents label="Model Initializer" ID="modelInitializer" pluralLabel="Model Initializers">
+    <implementation className="ModelInitializer"/>
+  </agents>
+  <agents label="InvestorAgent" ID="investorAgent" pluralLabel="InvestorAgents">
+    <implementation className="InvestorAgent"/>
+  </agents>
+  <projections xsi:type="score:SGeography" label="geography" ID="geography" pluralLabel="geographies"/>
+</score:SContext>

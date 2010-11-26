@@ -1,0 +1,49 @@
+<repast.simphony.visualization.engine.DefaultDisplayDescriptor>
+  <name>A Display</name>
+  <type>GIS3D</type>
+  <styles>
+    <entry>
+      <string>initialmodel.ZonalAgent</string>
+      <string>initialmodel.ZonalAgentStyle</string>
+    </entry>
+  </styles>
+  <editedStyles>
+    <entry>
+      <string>initialmodel.ZonalAgent</string>
+      <null/>
+    </entry>
+  </editedStyles>
+  <netStyles/>
+  <editedNetStyles/>
+  <frequency>ON_NEW</frequency>
+  <schedParams>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+  </schedParams>
+  <layoutInterval>0</layoutInterval>
+  <layerOrder>
+    <entry>
+      <string>initialmodel.ZonalAgent</string>
+      <int>0</int>
+    </entry>
+  </layerOrder>
+  <projections>
+    <repast.score.impl.SGeographyImpl>
+      <name>geography</name>
+    </repast.score.impl.SGeographyImpl>
+  </projections>
+  <valueLayers/>
+  <projectionDescriptors>
+    <entry>
+      <string>geography</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj class="repast.score.impl.SGeographyImpl" reference="../../../../projections/repast.score.impl.SGeographyImpl"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+  </projectionDescriptors>
+  <props/>
+</repast.simphony.visualization.engine.DefaultDisplayDescriptor>

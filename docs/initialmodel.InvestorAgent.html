@@ -1,0 +1,97 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>InvestorAgent.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">InvestorAgent.agent</P></HEAD><IMG SRC=images/initialmodel.InvestorAgent.png border=1 alt="Flowchart for InvestorAgent.agent" title="Flowchart for InvestorAgent.agent"></P>The package name is "initialmodel".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+</BLOCKQUOTE><P></p>
+The class "InvestorAgent" is defined with visibility "public" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "invso" with visibility "public" of type "def" and default value 1. This is an agent property. The block is tagged with the name "Investment in solar".</li></p>
+</p>
+    <li>There is a field named "invw" with visibility "public" of type "def" and default value 1. This is an agent property. The block is tagged with the name "Investment in wind".</li></p>
+</p>
+    <li>There is a field named "sumattw" with visibility "public" of type "def" and default value 1000000000000. This is an agent property. The block is tagged with the name "Sum of wind attractivity".</li></p>
+</p>
+    <li>There is a field named "sumattso" with visibility "public" of type "def" and default value 1000000000. This is an agent property. The block is tagged with the name "Sum of solar attractivity".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "step" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Calculate sum values".</li></p>
+    </p>
+    </p>
+    <BLOCKQUOTE>The step method is statically scheduled as follows:<BLOCKQUOTE></p>
+        <li>start = 2d</li></p>
+        <li>interval = 1d</li></p>
+        <li>shuffle = true</li></p>
+    </BLOCKQUOTE></BLOCKQUOTE></p>
+ <BLOCKQUOTE>The code for the "step" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        Context context = FindContext("initialModel"); Iterator myAgents = context.getAgentLayer(ZonalAgent).iterator()</p>
+        float tempso = 0; float tempw = 0;</p>
+</p>
+         This is a loop.</p>
+        while (myAgents.hasNext()) <BLOCKQUOTE></p>
+</p>
+             This is a task.</p>
+            tempso = tempso + myAgents.next().getAttso();</p>
+            tempw = tempw + myAgents.next().getAttw();</p>
+</p>
+        </BLOCKQUOTE></p>
+</p>
+         This is a task.</p>
+        this.setSumattso(tempso); </p>
+        this.setSumattw(tempw);</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>

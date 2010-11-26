@@ -1,0 +1,132 @@
+<HTML><FONT FACE=Arial, Verdana, Sans><TITLE>ZonalAgent.agent</TITLE><BODY><STYLE TYPE="text/css"><!--.centeralign <BLOCKQUOTE>text-align:center</BLOCKQUOTE>--></STYLE><HEAD><P CLASS="centeralign">ZonalAgent.agent</P></HEAD><IMG SRC=images/initialmodel.ZonalAgent.png border=1 alt="Flowchart for ZonalAgent.agent" title="Flowchart for ZonalAgent.agent"></P>The package name is "initialmodel".</p>
+The following external code is referenced:<BLOCKQUOTE></p>
+<li>Components from java.io.*</li></p>
+<li>Components from java.math.*</li></p>
+<li>Components from java.util.*</li></p>
+<li>Components from javax.measure.unit.*</li></p>
+<li>Components from org.jscience.mathematics.number.*</li></p>
+<li>Components from org.jscience.mathematics.vector.*</li></p>
+<li>Components from org.jscience.physics.amount.*</li></p>
+<li>Components from repast.simphony.adaptation.neural.*</li></p>
+<li>Components from repast.simphony.adaptation.regression.*</li></p>
+<li>Components from repast.simphony.context.*</li></p>
+<li>Components from repast.simphony.context.space.continuous.*</li></p>
+<li>Components from repast.simphony.context.space.gis.*</li></p>
+<li>Components from repast.simphony.context.space.graph.*</li></p>
+<li>Components from repast.simphony.context.space.grid.*</li></p>
+<li>Components from repast.simphony.engine.environment.*</li></p>
+<li>Components from repast.simphony.engine.schedule.*</li></p>
+<li>Components from repast.simphony.engine.watcher.*</li></p>
+<li>Components from repast.simphony.groovy.math.*</li></p>
+<li>Components from repast.simphony.integration.*</li></p>
+<li>Components from repast.simphony.matlab.link.*</li></p>
+<li>Components from repast.simphony.query.*</li></p>
+<li>Components from repast.simphony.query.space.continuous.*</li></p>
+<li>Components from repast.simphony.query.space.gis.*</li></p>
+<li>Components from repast.simphony.query.space.graph.*</li></p>
+<li>Components from repast.simphony.query.space.grid.*</li></p>
+<li>Components from repast.simphony.query.space.projection.*</li></p>
+<li>Components from repast.simphony.parameter.*</li></p>
+<li>Components from repast.simphony.random.*</li></p>
+<li>Components from repast.simphony.space.continuous.*</li></p>
+<li>Components from repast.simphony.space.gis.*</li></p>
+<li>Components from repast.simphony.space.graph.*</li></p>
+<li>Components from repast.simphony.space.grid.*</li></p>
+<li>Components from repast.simphony.space.projection.*</li></p>
+<li>Components from repast.simphony.ui.probe.*</li></p>
+<li>Components from repast.simphony.util.*</li></p>
+<li>Components from simphony.util.messages.*</li></p>
+<li>Components from static java.lang.Math.*</li></p>
+<li>Components from static repast.simphony.essentials.RepastEssentials.*</li></p>
+</BLOCKQUOTE><P></p>
+The class "ZonalAgent" is defined with visibility "public" . This is an agent.</p>
+ <BLOCKQUOTE></p>
+</p>
+    <li>There is a field named "longitude" with visibility "public" of type "float" and default value 0. This is an agent property. The block is tagged with the name "longitude".</li></p>
+</p>
+    <li>There is a field named "latitude" with visibility "public" of type "float" and default value 0. This is an agent property. The block is tagged with the name "latitude".</li></p>
+</p>
+    <li>There is a field named "initDemand" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "initDemand".</li></p>
+</p>
+    <li>There is a field named "prodZone" with visibility "public" of type "boolean" and default value 0. This is an agent property. The block is tagged with the name "Zone of Production?".</li></p>
+</p>
+    <li>There is a field named "mkkup" with visibility "public" of type "double" and default value 0.1. This is an agent property. The block is tagged with the name "Mark Up".</li></p>
+</p>
+    <li>There is a field named "job" with visibility "public" of type "double" and default value 0.0001. This is an agent property. The block is tagged with the name "job".</li></p>
+</p>
+    <li>There is a field named "pry" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "pry".</li></p>
+</p>
+    <li>There is a field named "price" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "price".</li></p>
+</p>
+    <li>There is a field named "pop" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Population".</li></p>
+</p>
+    <li>There is a field named "miso" with visibility "public" of type "double" and default value 0.1. This is an agent property. The block is tagged with the name "Micro Solar".</li></p>
+</p>
+    <li>There is a field named "maso" with visibility "public" of type "double" and default value 0.1. This is an agent property. The block is tagged with the name "Macro Solar".</li></p>
+</p>
+    <li>There is a field named "miw" with visibility "public" of type "double" and default value 0.1. This is an agent property. The block is tagged with the name "Micro Wind".</li></p>
+</p>
+    <li>There is a field named "maw" with visibility "public" of type "double" and default value 0.1. This is an agent property. The block is tagged with the name "Macro Wind".</li></p>
+</p>
+    <li>There is a field named "windy" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "How windy?".</li></p>
+</p>
+    <li>There is a field named "sun" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "How Sunny?".</li></p>
+</p>
+    <li>There is a field named "attso" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Attractivity of solar".</li></p>
+</p>
+    <li>There is a field named "attw" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Attractivity of wind".</li></p>
+</p>
+    <li>There is a field named "dmiso" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Delta micro solar with delta t".</li></p>
+</p>
+    <li>There is a field named "dmaw" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Delta macro wind with delta t".</li></p>
+</p>
+    <li>There is a field named "dmiw" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Delta micro wind with delta t".</li></p>
+</p>
+    <li>There is a field named "dmaso" with visibility "public" of type "double" and default value 0. This is an agent property. The block is tagged with the name "Delta macro solar with delta t".</li></p>
+</p>
+    </p>
+    </p>
+        <li>There is a method named "step" method has visibility     "public" has return type "def". This is the step behavior. The block is tagged with the name "Update amount of solar and wind".</li></p>
+    </p>
+    </p>
+    <BLOCKQUOTE>The step method is statically scheduled as follows:<BLOCKQUOTE></p>
+        <li>start = 1d</li></p>
+        <li>interval = 1d</li></p>
+        <li>shuffle = false</li></p>
+    </BLOCKQUOTE></BLOCKQUOTE></p>
+ <BLOCKQUOTE>The code for the "step" method is as follows:<BLOCKQUOTE><CODE></p>
+</p>
+</p>
+         Define the return value variable.</p>
+        def returnValue</p>
+</p>
+         Note the simulation time.</p>
+        def time = GetTickCountInTimeUnits()</p>
+</p>
+         This is a task.</p>
+        double delt = GetParameter("delt");</p>
+        this.setAttso( exp(1+0.5*this.getSun()));</p>
+        this.setAttw( exp(1+0.5*this.getWindy())) ;     </p>
+         In original model, order important - need to sum attw and attso across all agents after this step for the lines below</p>
+         involving the Investor Agent re macro solar and wind</p>
+        this.setDmiso( GetParameter("gs")*(this.getSun()*1.1 -1)*(this.getPop()/this.getMiso() -1)*(1 + 0.05*this.getMiso()));</p>
+         people taking up solar, fraction of houses without, suitable, owned, roof area. R ROC for households</p>
+        this.setDmiw( GetParameter("gw")*(this.getWindy()*1.025 -1)*(this.getPop()/this.getMiw() - 1)*(1 + 0.05*this.getMiw()));</p>
+                         people adopting micro wind</p>
+        this.setMiso( this.getMiso() + this.getDmiso()*delt);</p>
+        this.setMiw( this.getMiw() + this.getDmiw()*delt);</p>
+        InvestorAgent myInvestor = FindContext("initialModel").getObjects(InvestorAgent).get(0);   a hack as we have only one, so no network</p>
+        this.setDmaso( myInvestor.getInvso()*this.getAttso()/myInvestor.getSumattso());</p>
+        this.setDmaw( myInvestor.getInvw()*this.getAttw()/myInvestor.getSumattw());</p>
+        this.setMaso( this.getMaso() + this.getDmaso()*delt);</p>
+        this.setMaw( this.getMaw() + this.getDmaw()*delt);</p>
+         Return the results.</p>
+        return returnValue</p>
+</p>
+    </BLOCKQUOTE></BLOCKQUOTE></CODE></p>
+</p>
+</p>
+</p>
+</BLOCKQUOTE></p>
+</p>
+</BODY></HTML>
